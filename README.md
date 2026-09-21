@@ -66,11 +66,38 @@ this README or repository configuration. Everything inside `site/` is public;
 never put credentials or private material there. The `.nojekyll` marker also
 allows these files to be served without Jekyll processing.
 
+## Project Gallery
+
+The homepage's **Projects & experiments** link opens
+[site/projects.html](site/projects.html). The gallery is static HTML: its cards
+and navigation work without JavaScript, a server, or GitHub API requests.
+
+The initial catalog contains 17 public projects, including the microsite.
+The separate GitHub profile repository is excluded to avoid duplicating the
+microsite. Titles and summaries were curated from the public sites and
+repositories on September 21, 2026; new repositories are not added automatically.
+
+To add a project, duplicate an `<article class="project">` in the gallery and
+update its heading, description, GitHub Pages URL, and repository URL. Give the
+heading a unique `id`, use that value in the article's `aria-labelledby`, and
+update both link labels to identify the project. Keep one card per project.
+For a project with no published Pages site, use the existing `unpublished`
+text pattern instead of a placeholder link. Replace it with a real link once
+the site is published.
+
+Open either HTML file directly to preview. The existing Pages workflow already
+publishes the gallery because it uploads all of `site/`. To publish future
+committed updates to the configured website remote, use `git push pages main`.
+
 ## Checks
 
 Before publishing, open the page at desktop and narrow mobile widths, check
 both themes, confirm the GitHub links and avatar load, and use Tab to check
 keyboard focus and the skip link. No dependency installation is needed.
+
+Follow **Projects & experiments**, check the gallery at desktop and mobile
+widths, and use **Home** to return. Verify each card's two destinations (or its
+unpublished label), both color themes, and keyboard focus on every link.
 
 If the published URL returns 404, verify the repository name and owner, confirm
 that Pages uses **GitHub Actions**, and inspect the latest workflow run. The

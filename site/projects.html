@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects &amp; experiments | Chad Hage</title>
+  <meta name="description" content="Explore Chad Hage's projects and experiments, with live sites and source code on GitHub.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://chadhage.github.io/projects.html">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme = param === "light" || param === "dark"
+        ? param
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { letter-spacing: 0; }
+    body { margin: 0; min-height: 100svh; border-top: 6px solid var(--cp-accent); background: var(--cp-surface); color: var(--cp-text); font: 18px/1.6 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    a { color: inherit; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+    a:hover { color: var(--cp-accent-hover); }
+    a:focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 5px; }
+    ::selection { background: var(--cp-highlight); }
+    .wrap { width: min(100% - 64px, 1120px); margin-inline: auto; }
+    .skip-link { position: absolute; top: -100px; left: 24px; padding: 12px; background: var(--cp-surface); z-index: 1; }
+    .skip-link:focus { top: 16px; }
+    header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 28px; border-bottom: 1px solid var(--cp-border); }
+    .wordmark { font-weight: 650; text-decoration: none; }
+    nav { display: flex; gap: 24px; font-size: 16px; }
+    nav [aria-current] { color: var(--cp-accent); }
+    main { padding-top: 48px; }
+    .eyebrow { margin: 0 0 12px; color: var(--cp-accent); font-size: 14px; font-weight: 650; }
+    h1 { margin: 0 0 36px; font-size: 44px; line-height: 1.15; font-weight: 650; overflow-wrap: anywhere; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+    .project { display: flex; flex-direction: column; min-width: 0; padding: 24px; border: 1px solid var(--cp-border); border-top: 3px solid var(--cp-accent); border-radius: 8px; background: var(--cp-surface-soft); }
+    .project h2 { margin: 0 0 12px; font-size: 22px; line-height: 1.35; font-weight: 600; overflow-wrap: anywhere; }
+    .project p { margin: 0 0 24px; font-size: 16px; color: var(--cp-text-muted); }
+    .project-links { margin-top: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; font-size: 15px; }
+    .project-links a { display: inline-flex; align-items: center; min-height: 44px; }
+    .project-links a:first-child { color: var(--cp-accent); }
+    .unpublished { color: var(--cp-text-soft); font-size: 14px; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 16px; padding-block: 40px 28px; font-size: 13px; color: var(--cp-text-soft); }
+    .signature { display: flex; align-items: center; gap: 12px; }
+    .signature img { width: 32px; height: 32px; border-radius: 50%; }
+    @media (max-width: 960px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 40px); }
+      header { padding-block: 20px; }
+      main { padding-top: 32px; }
+      h1 { font-size: 32px; }
+      .gallery { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      main { animation: arrive 450ms ease-out both; }
+      @keyframes arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <a class="wordmark" href="./index.html">Chad Hage</a>
+      <nav aria-label="Main navigation">
+        <a href="./index.html">Home</a>
+        <a href="./projects.html" aria-current="page">Projects</a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <p class="eyebrow">Chad Hage / Work</p>
+      <h1>Projects &amp; experiments</h1>
+      <div class="gallery">
+        <article class="project" aria-labelledby="ci-title">
+          <h2 id="ci-title">Continuous Improvement Knowledge Checks</h2>
+          <p>Topic-based quizzes on process improvement, quality, measurement, and governance.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/ci-in-30/" aria-label="Continuous Improvement Knowledge Checks: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/ci-in-30" aria-label="Continuous Improvement Knowledge Checks: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="exchange-title">
+          <h2 id="exchange-title">Exchange Online Protection Baselines</h2>
+          <p>Standard and Strict protection templates with PowerShell automation and validation for Exchange Online and Defender for Office 365.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/enterprise-scale-exchange-online/" aria-label="Exchange Online Protection Baselines: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/enterprise-scale-exchange-online" aria-label="Exchange Online Protection Baselines: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="arc-title">
+          <h2 id="arc-title">Azure Arc Fleet Planning</h2>
+          <p>A planning dashboard for hybrid and multicloud onboarding, from discovery and pilot to rollout and operational ownership.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/azure-arc-multicloud/" aria-label="Azure Arc Fleet Planning: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/azure-arc-multicloud" aria-label="Azure Arc Fleet Planning: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="usf-title">
+          <h2 id="usf-title">USF Team 3: Agentic Development</h2>
+          <p>A Fall 2026 student project hub with milestones, weekly updates, kickoff materials, and resources.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/usf-cis4910-2026-team-3/" aria-label="USF Team 3: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/usf-cis4910-2026-team-3" aria-label="USF Team 3: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="microservices-title">
+          <h2 id="microservices-title">Well-Architected Microservices on Azure</h2>
+          <p>A workshop on rebuilding a .NET monolith with vertical-slice microservices, API Management, and Container Apps.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/microservices-on-azure/" aria-label="Well-Architected Microservices on Azure: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/microservices-on-azure" aria-label="Well-Architected Microservices on Azure: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="ado-title">
+          <h2 id="ado-title">Azure DevOps Tune-Up</h2>
+          <p>A guided, 16-step assessment for engagement scope, stakeholders, evidence, and decisions.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/ado-tune-up/" aria-label="Azure DevOps Tune-Up: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/ado-tune-up" aria-label="Azure DevOps Tune-Up: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="aks-irl-title">
+          <h2 id="aks-irl-title">Real-Time Messaging on AKS</h2>
+          <p>A hands-on workshop moving a Java and C++ messaging system to AKS, covering delivery, resilience, and failover.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/aks-irl/" aria-label="Real-Time Messaging on AKS: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/aks-irl" aria-label="Real-Time Messaging on AKS: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="aks-labs-title">
+          <h2 id="aks-labs-title">Containers to AKS: Hands-On Labs</h2>
+          <p>Nine practical phases covering container builds, Compose, Kubernetes, AKS deployment, and troubleshooting.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/aks-zero-to-hero-with-labs/" aria-label="Containers to AKS: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/aks-zero-to-hero-with-labs" aria-label="Containers to AKS: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="aca-title">
+          <h2 id="aca-title">Well-Architected Azure Container Apps</h2>
+          <p>An advanced workshop with hands-on workloads, failure exercises, and evidence-based design and operations assessments.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/waf-aca/" aria-label="Well-Architected Azure Container Apps: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/waf-aca" aria-label="Well-Architected Azure Container Apps: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="avd-title">
+          <h2 id="avd-title">Enterprise-Scale AVD Assessment</h2>
+          <p>An interactive Azure Virtual Desktop architecture assessment for GCC High and Azure Government with multitenant dependencies.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/elz-for-avd/" aria-label="Enterprise-Scale AVD Assessment: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/elz-for-avd" aria-label="Enterprise-Scale AVD Assessment: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="vulns-title">
+          <h2 id="vulns-title">Third-Party Vulnerabilities &amp; App Posture</h2>
+          <p>A read-only Azure Monitor workbook for Defender software vulnerabilities and Entra application inventory, credentials, and permissions.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/3rd-party-vulns/" aria-label="Third-Party Vulnerabilities and App Posture: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/3rd-party-vulns" aria-label="Third-Party Vulnerabilities and App Posture: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="policy-title">
+          <h2 id="policy-title">Contoso Azure Policy Baseline</h2>
+          <p>A sample governance baseline with policy definitions, initiatives, management-group assignments, and an audit-first deployment wizard.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/contoso-azure-policies/" aria-label="Contoso Azure Policy Baseline: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/contoso-azure-policies" aria-label="Contoso Azure Policy Baseline: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="az305-title">
+          <h2 id="az305-title">AZ-305 Study &amp; Practice</h2>
+          <p>An unofficial, AI-generated study guide, timed practice simulator, and scenario-based architecture labs.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/az-305/" aria-label="AZ-305 Study and Practice: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/az-305" aria-label="AZ-305 Study and Practice: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="agentid-title">
+          <h2 id="agentid-title">Enterprise Agent ID Field Guide</h2>
+          <p>Eight learning modules on agent identity inventory, detection, lifecycle, governance, and multicloud operating strategy.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/agentid-in-the-enterprise/" aria-label="Enterprise Agent ID Field Guide: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/agentid-in-the-enterprise" aria-label="Enterprise Agent ID Field Guide: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="multitenant-title">
+          <h2 id="multitenant-title">GCC High Multitenant Identity POC</h2>
+          <p>A proof of concept for validating GCC High-rooted identity, commercial-tenant access, collaboration continuity, and rollback.</p>
+          <div class="project-links">
+            <span class="unpublished">GitHub Pages not published</span>
+            <a href="https://github.com/chadhage/single-tenant-to-multi-tenant" aria-label="GCC High Multitenant Identity POC: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="experimental-title">
+          <h2 id="experimental-title">Experimental Microservice Samples</h2>
+          <p>A Hello World system with a browser UI, Node.js API, and Azure Table Storage for caller counts and history.</p>
+          <div class="project-links">
+            <span class="unpublished">GitHub Pages not published</span>
+            <a href="https://github.com/chadhage/experimental" aria-label="Experimental Microservice Samples: GitHub repository">Repository</a>
+          </div>
+        </article>
+        <article class="project" aria-labelledby="microsite-title">
+          <h2 id="microsite-title">Personal microsite</h2>
+          <p>A lightweight personal website with projects, experiments, and links to my work.</p>
+          <div class="project-links">
+            <a href="https://chadhage.github.io/" aria-label="Personal microsite: GitHub Pages">GitHub Pages</a>
+            <a href="https://github.com/chadhage/chadhage.github.io" aria-label="Personal microsite: GitHub repository">Repository</a>
+          </div>
+        </article>
+      </div>
+    </main>
+    <footer>
+      <span class="signature"><img src="https://github.com/chadhage.png?size=64" alt="" width="32" height="32">&copy; Chad Hage</span>
+      <a href="https://github.com/chadhage?tab=repositories">All repositories on GitHub</a>
+    </footer>
+  </div>
+</body>
+</html>
