@@ -87,7 +87,22 @@
       padding-block: 24px;
       border-bottom: 1px solid var(--cp-border);
     }
-    .wordmark { font-weight: 650; text-decoration: none; }
+    .identity { min-width: 0; }
+    .identity-primary { display: flex; align-items: center; gap: 12px; }
+    .microsoft-logo-link {
+      display: inline-flex;
+      flex-shrink: 0;
+      padding: 5px 7px;
+      border: 1px solid var(--cp-border);
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .microsoft-logo-crop { width: 23px; height: 23px; overflow: hidden; }
+    .microsoft-logo { display: block; width: auto; max-width: none; height: 23px; }
+    .wordmark { font-weight: 650; text-decoration: none; white-space: nowrap; }
+    .identity-links { margin: 5px 0 0; color: var(--cp-text-soft); font-size: 12px; line-height: 1.4; }
+    .identity-links a { text-decoration: none; }
+    .identity-links span { margin-inline: 5px; }
     .header-actions { display: flex; align-items: center; gap: 16px; }
     .button {
       display: inline-flex;
@@ -109,6 +124,7 @@
     .button.secondary:hover { background: var(--cp-accent-soft); }
     main { padding-top: 56px; }
     .hero { display: grid; grid-template-columns: 1fr 260px; gap: 64px; align-items: center; }
+    .hero.without-portrait { grid-template-columns: minmax(0, 760px); }
     .portrait {
       display: block;
       width: 260px;
@@ -192,6 +208,9 @@
       inset: 0 0 0 auto;
       z-index: 20;
       width: min(460px, 100%);
+      max-width: 100vw;
+      max-height: 100svh;
+      margin: 0;
       padding: 28px;
       border: 0;
       border-left: 1px solid var(--cp-border);
@@ -199,6 +218,7 @@
       color: var(--cp-text);
       box-shadow: var(--cp-shadow);
       overflow-y: auto;
+      overflow-x: hidden;
     }
     .customizer:not([open]) { display: none; }
     .customizer::backdrop { background: rgba(0, 0, 0, 0.42); }
@@ -213,13 +233,13 @@
       cursor: pointer;
     }
     .customizer-intro { margin: 12px 0 24px; color: var(--cp-text-muted); font-size: 15px; }
-    fieldset { margin: 24px 0 0; padding: 20px; border: 1px solid var(--cp-border); border-radius: 8px; }
+    fieldset { min-width: 0; margin: 24px 0 0; padding: 20px; border: 1px solid var(--cp-border); border-radius: 8px; }
     legend { padding-inline: 6px; }
     .choice { display: flex; align-items: start; gap: 10px; margin-top: 12px; font-weight: 400; }
     .choice input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--cp-accent); }
     .fieldset-hint { margin: 0 0 12px; color: var(--cp-text-muted); font-size: 14px; }
     .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
-    .segment-option { position: relative; margin: 0; }
+    .segment-option { position: relative; min-width: 0; margin: 0; }
     .segment-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
     .segment-option span {
       display: flex;
@@ -233,6 +253,7 @@
       font-size: 14px;
       font-weight: 600;
       line-height: 1.3;
+      overflow-wrap: anywhere;
       cursor: pointer;
     }
     .segment-option input:checked + span { border-color: var(--cp-accent); background: var(--cp-accent-soft); color: var(--cp-accent); }
@@ -262,7 +283,9 @@
       .wrap { width: calc(100% - 40px); }
       header { padding-block: 18px; }
       header .customize-trigger { display: none; }
-      .wordmark { white-space: nowrap; }
+      .identity-primary { gap: 8px; }
+      .identity-links { font-size: 11px; }
+      .identity-links span { margin-inline: 2px; }
       .header-actions .button { padding-inline: 12px; font-size: 15px; }
       main { padding-top: 36px; }
       h1 { font-size: 46px; }
@@ -288,7 +311,19 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap">
     <header>
-      <a class="wordmark" href="./index.html" aria-label="Chad Hage home">Chad Hage</a>
+      <div class="identity">
+        <div class="identity-primary">
+          <a class="microsoft-logo-link" href="https://www.microsoft.com/" aria-label="Microsoft">
+            <span class="microsoft-logo-crop">
+              <img class="microsoft-logo" src="https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png" alt="" height="23">
+            </span>
+          </a>
+          <a class="wordmark" href="./index.html" aria-label="Chad Hage home">Chad Hage</a>
+        </div>
+        <p class="identity-links">
+          <a href="https://chadhage.com/">chadhage.com</a><span aria-hidden="true">|</span><a href="https://aka.ms/chad.a.hage">aka.ms/chad.a.hage</a>
+        </p>
+      </div>
       <div class="header-actions">
         <button class="button secondary customize-trigger" type="button" data-open-customizer>Customize for your event</button>
         <a class="button" href="#booking">Book Chad</a>
@@ -518,6 +553,7 @@
     <fieldset>
       <legend>Visible sections</legend>
       <label class="choice"><input type="checkbox" value="intro" data-section-toggle checked><span>Introduction</span></label>
+      <label class="choice"><input type="checkbox" id="picture-toggle" checked><span>Profile picture</span></label>
       <label class="choice"><input type="checkbox" value="topics" data-section-toggle checked><span>Speaking topics</span></label>
       <label class="choice"><input type="checkbox" value="formats" data-section-toggle checked><span>Presentation formats</span></label>
       <label class="choice"><input type="checkbox" value="story" data-section-toggle checked><span>First-person story</span></label>
@@ -552,6 +588,7 @@
       const defaults = {
         format: "keynote",
         focuses: [],
+        picture: true,
         theme: "system",
         weights: { ai: 90, tools: 80, cloud: 40, "technical-leadership": 60, "leadership-development": 50 },
         sections: ["intro", "topics", "formats", "story", "bio", "timeline", "philosophy", "booking"]
@@ -612,6 +649,7 @@
             .split(",")
             .map(focus => legacyFocusMap[focus] || focus)
             .filter(focus => Object.hasOwn(focusNames, focus)),
+          picture: params.get("picture") !== "0",
           theme: requestedTheme === "light" || requestedTheme === "dark" ? requestedTheme : defaults.theme,
           weights: Object.fromEntries(Object.entries(defaults.weights).map(([topic, fallback]) => [
             topic,
@@ -627,6 +665,7 @@
       const readControls = () => ({
         format: document.querySelector('input[name="format"]:checked').value,
         focuses: [...document.querySelectorAll('input[name="focus"]:checked')].map(input => input.value),
+        picture: document.querySelector("#picture-toggle").checked,
         theme: document.querySelector('input[name="theme"]:checked').value,
         weights: Object.fromEntries([...document.querySelectorAll("[data-topic-range]")].map(input => [
           input.dataset.topicRange,
@@ -660,6 +699,7 @@
         [...url.searchParams.keys()].forEach(key => url.searchParams.delete(key));
         url.searchParams.set("format", state.format);
         if (state.focuses.length) url.searchParams.set("focus", state.focuses.join(","));
+        if (!state.picture) url.searchParams.set("picture", "0");
         if (state.theme !== "system") url.searchParams.set("clawpilotTheme", state.theme);
         Object.entries(state.weights).forEach(([topic, weight]) => url.searchParams.set(`topic-${topic}`, weight));
         url.searchParams.set("sections", state.sections.join(","));
@@ -672,6 +712,7 @@
         document.querySelectorAll('input[name="focus"]').forEach(input => {
           input.checked = state.focuses.includes(input.value);
         });
+        document.querySelector("#picture-toggle").checked = state.picture;
         document.querySelector(`input[name="theme"][value="${state.theme}"]`).checked = true;
         Object.entries(state.weights).forEach(([topic, weight]) => {
           const input = document.querySelector(`[data-topic-range="${topic}"]`);
@@ -690,6 +731,9 @@
           : state.theme;
         document.documentElement.dataset.theme = appliedTheme;
         document.documentElement.dataset.embed = state.embed;
+        const hero = document.querySelector(".hero");
+        hero.classList.toggle("without-portrait", !state.picture);
+        hero.querySelector(".portrait").hidden = !state.picture;
         document.querySelectorAll("[data-section]").forEach(section => {
           section.hidden = !state.sections.includes(section.dataset.section);
         });
