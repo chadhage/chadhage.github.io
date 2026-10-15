@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Speaking | Chad Hage</title>
+  <meta name="description" content="Invite Chad Hage to speak about AI, developer tools, the future of software engineering, and technical leadership.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://chadhage.github.io/speaker.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Chad Hage | Speaker">
+  <meta property="og:description" content="Thoughtful, practical conversations about AI, developer tools, software engineering, and leadership.">
+  <meta property="og:url" content="https://chadhage.github.io/speaker.html">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme = param === "light" || param === "dark"
+        ? param
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #167d3e;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #777777;
+      --cp-text: #dedede;
+      --cp-text-muted: #b5b5b5;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    html { letter-spacing: 0; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      border-top: 6px solid var(--cp-accent);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      font: 18px/1.6 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    a:hover { color: var(--cp-accent-hover); }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 4px; }
+    ::selection { background: var(--cp-highlight); }
+    .wrap { width: min(100% - 64px, 1100px); margin-inline: auto; }
+    .skip-link { position: absolute; top: -100px; left: 24px; z-index: 10; padding: 12px; background: var(--cp-surface); }
+    .skip-link:focus { top: 16px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 24px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .wordmark { font-weight: 650; text-decoration: none; }
+    .header-actions { display: flex; align-items: center; gap: 16px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid var(--cp-accent);
+      border-radius: 6px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 650;
+      line-height: 1.3;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button:hover { background: var(--cp-accent-hover); color: var(--cp-accent-fg); }
+    .button.secondary { background: transparent; color: var(--cp-accent); }
+    .button.secondary:hover { background: var(--cp-accent-soft); }
+    main { padding-top: 56px; }
+    .hero { display: grid; grid-template-columns: 1fr 260px; gap: 64px; align-items: center; }
+    .portrait {
+      display: block;
+      width: 260px;
+      height: 260px;
+      border: 1px solid var(--cp-border);
+      border-radius: 20px;
+      background: var(--cp-surface-soft);
+      object-fit: cover;
+      box-shadow: var(--cp-shadow);
+    }
+    .eyebrow { margin: 0 0 12px; color: var(--cp-accent); font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font-size: clamp(48px, 8vw, 78px); font-weight: 650; line-height: 1.05; letter-spacing: -0.03em; }
+    .lede { max-width: 720px; margin: 24px 0 0; color: var(--cp-text-muted); font-size: 24px; line-height: 1.5; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    section { margin-top: 72px; scroll-margin-top: 24px; }
+    .section-heading { max-width: 720px; }
+    h2 { margin: 0; font-size: 36px; line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; }
+    h3 { margin: 0; font-size: 22px; line-height: 1.35; font-weight: 650; }
+    .section-heading p, .section-copy { color: var(--cp-text-muted); }
+    .topic-grid, .format-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+    .topic, .format {
+      padding: 24px;
+      border: 1px solid var(--cp-border);
+      border-radius: 8px;
+      background: var(--cp-surface-soft);
+    }
+    .topic[data-weight="low"] { display: none; }
+    .topic p, .format p { margin: 10px 0 0; color: var(--cp-text-muted); font-size: 16px; }
+    .topic-weight { display: inline-block; margin-top: 16px; color: var(--cp-accent); font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .format.recommended { border-color: var(--cp-accent); box-shadow: inset 4px 0 0 var(--cp-accent); }
+    .recommended-label { display: none; margin-bottom: 8px; color: var(--cp-accent); font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .format.recommended .recommended-label { display: block; }
+    .story-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .story-layout p { margin: 16px 0 0; color: var(--cp-text-muted); }
+    blockquote {
+      margin: 28px 0 0;
+      padding: 24px;
+      border-left: 4px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      font-size: 21px;
+    }
+    blockquote p { margin: 0; }
+    .timeline { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 28px; }
+    .timeline article { position: relative; padding: 30px 24px 0 0; border-top: 2px solid var(--cp-border); }
+    .timeline article::before { position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--cp-accent); content: ""; }
+    .timeline p { margin: 8px 20px 0 0; color: var(--cp-text-muted); font-size: 16px; }
+    .booking {
+      padding: 36px;
+      border-radius: 12px;
+      background: var(--cp-bg);
+    }
+    .booking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 28px; }
+    .fields { display: grid; gap: 18px; }
+    label, legend { font-weight: 650; }
+    label span { display: block; margin-bottom: 6px; }
+    input[type="text"], input[type="date"], input[type="url"], select, textarea {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1px solid var(--cp-border-strong);
+      border-radius: 5px;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    .summary {
+      min-height: 100%;
+      padding: 24px;
+      border: 1px solid var(--cp-border);
+      border-radius: 8px;
+      background: var(--cp-surface);
+    }
+    .summary h3 { margin-bottom: 14px; }
+    .summary pre { margin: 0; color: var(--cp-text-muted); font: 15px/1.55 Consolas, "Courier New", monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .summary .button { width: 100%; margin-top: 20px; }
+    .fine-print { margin: 10px 0 0; color: var(--cp-text-soft); font-size: 13px; }
+    footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding-block: 48px 28px; color: var(--cp-text-soft); font-size: 13px; }
+    footer p { margin: 0; }
+    .customizer {
+      position: fixed;
+      inset: 0 0 0 auto;
+      z-index: 20;
+      width: min(460px, 100%);
+      padding: 28px;
+      border: 0;
+      border-left: 1px solid var(--cp-border);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      box-shadow: var(--cp-shadow);
+      overflow-y: auto;
+    }
+    .customizer:not([open]) { display: none; }
+    .customizer::backdrop { background: rgba(0, 0, 0, 0.42); }
+    .customizer-head { display: flex; align-items: start; justify-content: space-between; gap: 20px; }
+    .icon-button {
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--cp-border);
+      border-radius: 50%;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+    }
+    .customizer-intro { margin: 12px 0 24px; color: var(--cp-text-muted); font-size: 15px; }
+    fieldset { margin: 24px 0 0; padding: 20px; border: 1px solid var(--cp-border); border-radius: 8px; }
+    legend { padding-inline: 6px; }
+    .choice { display: flex; align-items: start; gap: 10px; margin-top: 12px; font-weight: 400; }
+    .choice input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--cp-accent); }
+    .fieldset-hint { margin: 0 0 12px; color: var(--cp-text-muted); font-size: 14px; }
+    .segment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .segment-option { position: relative; margin: 0; }
+    .segment-option input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+    .segment-option span {
+      display: flex;
+      align-items: center;
+      min-height: 52px;
+      height: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--cp-border);
+      border-radius: 6px;
+      background: var(--cp-surface-soft);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.3;
+      cursor: pointer;
+    }
+    .segment-option input:checked + span { border-color: var(--cp-accent); background: var(--cp-accent-soft); color: var(--cp-accent); }
+    .segment-option input:focus-visible + span { outline: 3px solid var(--cp-accent); outline-offset: 3px; }
+    .range-row { margin-top: 16px; }
+    .range-label { display: flex; justify-content: space-between; gap: 16px; font-size: 14px; }
+    input[type="range"] { width: 100%; accent-color: var(--cp-accent); }
+    .recommendation { margin-top: 20px; padding: 16px; border-radius: 6px; background: var(--cp-accent-soft); font-size: 14px; }
+    .recommendation strong { color: var(--cp-accent); }
+    .share-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+    .share-actions .button { width: 100%; }
+    .share-status { min-height: 24px; margin: 10px 0 0; color: var(--cp-success); font-size: 14px; }
+    .embed-code { min-height: 94px; margin-top: 12px; font-size: 12px; }
+    [hidden] { display: none !important; }
+    html[data-embed="true"] body { border-top-width: 4px; }
+    html[data-embed="true"] header,
+    html[data-embed="true"] footer,
+    html[data-embed="true"] .customize-trigger { display: none; }
+    html[data-embed="true"] main { padding-block: 40px; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 32px; }
+      .portrait { grid-row: 1; width: 150px; height: 150px; border-radius: 50%; }
+      .story-layout, .booking-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      .wrap { width: calc(100% - 40px); }
+      header { padding-block: 18px; }
+      header .customize-trigger { display: none; }
+      .wordmark { white-space: nowrap; }
+      .header-actions .button { padding-inline: 12px; font-size: 15px; }
+      main { padding-top: 36px; }
+      h1 { font-size: 46px; }
+      h2 { font-size: 30px; }
+      .lede { font-size: 20px; }
+      section { margin-top: 52px; }
+      .topic-grid, .format-grid { grid-template-columns: 1fr; }
+      .booking { padding: 24px 18px; }
+      .customizer { padding: 22px 20px; }
+      .segment-grid { grid-template-columns: 1fr; }
+      .share-actions { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      main { animation: arrive 450ms ease-out both; }
+      @keyframes arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <a class="wordmark" href="./index.html" aria-label="Chad Hage home">Chad Hage</a>
+      <div class="header-actions">
+        <button class="button secondary customize-trigger" type="button" data-open-customizer>Customize for your event</button>
+        <a class="button" href="#booking">Book Chad</a>
+      </div>
+    </header>
+    <main id="main" tabindex="-1">
+      <section class="hero" data-section="intro">
+        <div>
+          <p class="eyebrow">Speaker / Technologist / Leader</p>
+          <h1>Ideas worth building—and sharing.</h1>
+          <p class="lede">Chad Hage brings a practical, people-centered perspective to AI, developer tools, software engineering, and the leadership that helps technical teams thrive.</p>
+          <div class="hero-actions">
+            <a class="button" href="#booking">Start a speaking request</a>
+            <button class="button secondary customize-trigger" type="button" data-open-customizer>Tailor this profile</button>
+          </div>
+        </div>
+        <img class="portrait" src="https://github.com/chadhage.png?size=520" alt="Portrait of Chad Hage" width="260" height="260">
+      </section>
+
+      <section data-section="topics" aria-labelledby="topics-title">
+        <div class="section-heading">
+          <p class="eyebrow">Conversation starters</p>
+          <h2 id="topics-title">Topics shaped around your audience</h2>
+          <p>Use the event customizer to adjust how much emphasis each topic receives. The profile and booking request will update with your choices.</p>
+        </div>
+        <div class="topic-grid">
+          <article class="topic" data-topic="ai">
+            <h3>AI &amp; the future of software engineering</h3>
+            <p>How AI is changing the way teams think, create, collaborate, and deliver software—and what deserves our attention next.</p>
+            <span class="topic-weight" data-weight-label="ai">Primary focus</span>
+          </article>
+          <article class="topic" data-topic="tools">
+            <h3>Developer tools</h3>
+            <p>Designing and adopting tools that reduce friction, sharpen feedback loops, and leave developers more room for meaningful work.</p>
+            <span class="topic-weight" data-weight-label="tools">Primary focus</span>
+          </article>
+          <article class="topic" data-topic="cloud">
+            <h3>Cloud &amp; enterprise technology</h3>
+            <p>Connecting modern platforms to real organizational needs with a focus on clarity, sustainable adoption, and practical outcomes.</p>
+            <span class="topic-weight" data-weight-label="cloud">Supporting topic</span>
+          </article>
+          <article class="topic" data-topic="technical-leadership">
+            <h3>Technical leadership</h3>
+            <p>Making sound decisions amid ambiguity, communicating across disciplines, and helping engineering teams move with purpose.</p>
+            <span class="topic-weight" data-weight-label="technical-leadership">Supporting topic</span>
+          </article>
+          <article class="topic" data-topic="leadership-development">
+            <h3>Leadership development</h3>
+            <p>Growing the judgment, confidence, and human skills that help current and emerging leaders create healthy technical cultures.</p>
+            <span class="topic-weight" data-weight-label="leadership-development">Supporting topic</span>
+          </article>
+        </div>
+      </section>
+
+      <section data-section="formats" aria-labelledby="formats-title">
+        <div class="section-heading">
+          <p class="eyebrow">Choose the right room</p>
+          <h2 id="formats-title">A format that fits your event</h2>
+          <p>The customizer recommends a format based on your topic mix, while leaving the final choice to you.</p>
+        </div>
+        <div class="format-grid">
+          <article class="format" data-format-card="fireside">
+            <span class="recommended-label">Recommended for your mix</span>
+            <h3>Casual Fireside Chat</h3>
+            <p>A candid, conversational exchange that works well for broad themes, personal perspective, and audience connection.</p>
+          </article>
+          <article class="format recommended" data-format-card="keynote">
+            <span class="recommended-label">Recommended for your mix</span>
+            <h3>Keynote</h3>
+            <p>A focused narrative designed to align a room around an idea, open new possibilities, and leave people with a clear next step.</p>
+          </article>
+          <article class="format" data-format-card="deep-dive">
+            <span class="recommended-label">Recommended for your mix</span>
+            <h3>Technical Deep Dive</h3>
+            <p>A detailed session for technical audiences who want practical context, sharper questions, and ideas they can apply.</p>
+          </article>
+          <article class="format" data-format-card="panel">
+            <span class="recommended-label">Recommended for your mix</span>
+            <h3>Panel</h3>
+            <p>A collaborative format that benefits from multiple viewpoints, responsive discussion, and an experienced technical voice.</p>
+          </article>
+        </div>
+      </section>
+
+      <section data-section="story" aria-labelledby="story-title">
+        <p class="eyebrow">In Chad's words</p>
+        <div class="story-layout">
+          <div>
+            <h2 id="story-title">Technology matters most when it helps people do their best work.</h2>
+          </div>
+          <div>
+            <p>My career has kept me close to the intersection of people, technology, and change. I am interested not only in what a new tool can do, but in how teams understand it, make good decisions with it, and turn possibility into durable progress.</p>
+            <p>When I speak, I aim to make complex ideas approachable without sanding away the details that matter. The best sessions feel like the start of a useful conversation—one that continues after everyone leaves the room.</p>
+          </div>
+        </div>
+      </section>
+
+      <section data-section="bio" aria-labelledby="bio-title">
+        <div class="section-heading">
+          <p class="eyebrow">Event-ready biography</p>
+          <h2 id="bio-title">About Chad</h2>
+          <p class="section-copy">Chad Hage is a technologist and technical leader who explores how AI, developer tools, and modern engineering practices can help people and organizations do better work. He brings a practical, approachable perspective to emerging technology, enterprise change, and the human side of technical leadership. Chad speaks with curiosity, clarity, and a focus on ideas audiences can carry into their own teams.</p>
+        </div>
+      </section>
+
+      <section data-section="timeline" aria-labelledby="timeline-title">
+        <div class="section-heading">
+          <p class="eyebrow">A career through-line</p>
+          <h2 id="timeline-title">From technology to transformation</h2>
+        </div>
+        <div class="timeline">
+          <article>
+            <h3>Build</h3>
+            <p>Hands-on experience creates respect for the details, constraints, and craft behind good technical work.</p>
+          </article>
+          <article>
+            <h3>Lead</h3>
+            <p>Technical leadership turns complexity into shared direction and helps people make confident decisions together.</p>
+          </article>
+          <article>
+            <h3>Share</h3>
+            <p>Speaking opens a wider conversation about what technology makes possible and how we can shape it responsibly.</p>
+          </article>
+        </div>
+      </section>
+
+      <section data-section="philosophy" aria-labelledby="philosophy-title">
+        <div class="section-heading">
+          <p class="eyebrow">Speaking philosophy</p>
+          <h2 id="philosophy-title">Clear ideas. Honest tradeoffs. Useful conversations.</h2>
+        </div>
+        <blockquote>
+          <p>“A strong talk should respect the audience’s experience, make complexity easier to navigate, and give people something worth discussing on the way home.”</p>
+        </blockquote>
+      </section>
+
+      <section class="booking" id="booking" data-section="booking" aria-labelledby="booking-title">
+        <p class="eyebrow">Speaking engagement request</p>
+        <h2 id="booking-title">Tell Chad about your event</h2>
+        <p class="section-copy">Add what you know today. Review the generated request, then open it in your email app to send it to Chad.</p>
+        <div class="booking-grid">
+          <form class="fields" id="booking-form">
+            <label><span>Your name</span><input type="text" name="contactName" autocomplete="name"></label>
+            <label><span>Event or organization</span><input type="text" name="eventName" autocomplete="organization"></label>
+            <label><span>Event date</span><input type="date" name="eventDate"></label>
+            <label><span>Event location or URL</span><input type="text" name="eventLocation" placeholder="City, venue, or virtual"></label>
+            <label><span>Audience</span><input type="text" name="audience" placeholder="Who will attend, and about how many?"></label>
+            <label><span>Additional context</span><textarea name="notes" placeholder="Goals, timing, budget, or anything else Chad should know"></textarea></label>
+          </form>
+          <div class="summary" aria-live="polite">
+            <h3>Review your request</h3>
+            <pre id="request-summary"></pre>
+            <a class="button" id="email-request" href="mailto:chad.hage@microsoft.com?subject=Speaking%20Engagement%20Request">Open request in email</a>
+            <p class="fine-print">Nothing is submitted by this page. Your email app will open with the request addressed to chad.hage@microsoft.com.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; Chad Hage</p>
+      <p>Thoughtful technology. Practical leadership.</p>
+    </footer>
+  </div>
+
+  <dialog class="customizer" id="customizer" aria-labelledby="customizer-title">
+    <div class="customizer-head">
+      <div>
+        <p class="eyebrow">Event profile builder</p>
+        <h2 id="customizer-title">Tailor this page</h2>
+      </div>
+      <button class="icon-button" type="button" data-close-customizer aria-label="Close customizer">&#10005;</button>
+    </div>
+    <p class="customizer-intro">Choose a format, adjust topic emphasis, and hide sections you do not need. Your settings can be shared as a unique link or embedded in an iframe.</p>
+
+    <fieldset>
+      <legend>Presentation format</legend>
+      <label class="choice"><input type="radio" name="format" value="fireside"><span>Casual Fireside Chat</span></label>
+      <label class="choice"><input type="radio" name="format" value="keynote" checked><span>Keynote</span></label>
+      <label class="choice"><input type="radio" name="format" value="deep-dive"><span>Technical Deep Dive</span></label>
+      <label class="choice"><input type="radio" name="format" value="panel"><span>Panel</span></label>
+      <div class="recommendation" id="format-recommendation"></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Focus</legend>
+      <p class="fieldset-hint">Select all that apply.</p>
+      <div class="segment-grid">
+        <label class="segment-option"><input type="checkbox" name="focus" value="career-development"><span>Career and personal development</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="government"><span>Government, Public Sector</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="financial-services"><span>FinTech/FIS/Capital Markets</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="high-tech"><span>High Tech</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="professional-services"><span>ProServe</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="legal-tech"><span>LegalTech</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="startups-joint-ventures"><span>Startups/Joint Ventures</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="manufacturing-automotives-pharma"><span>Manufacturing/Automotives/Pharma</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="energy-oil-gas"><span>Energy/Oil &amp; Gas</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="retail-supply-chain-logistics"><span>Retail/Supply Chain/Logistics</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="media-entertainment"><span>Media &amp; Entertainment</span></label>
+        <label class="segment-option"><input type="checkbox" name="focus" value="nonprofit-ngos"><span>Nonprofit &amp; NGOs</span></label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Topic emphasis</legend>
+      <div class="range-row">
+        <label class="range-label" for="weight-ai"><span>AI &amp; future of software</span><output for="weight-ai">90%</output></label>
+        <input id="weight-ai" type="range" min="0" max="100" step="10" value="90" data-topic-range="ai">
+      </div>
+      <div class="range-row">
+        <label class="range-label" for="weight-tools"><span>Developer tools</span><output for="weight-tools">80%</output></label>
+        <input id="weight-tools" type="range" min="0" max="100" step="10" value="80" data-topic-range="tools">
+      </div>
+      <div class="range-row">
+        <label class="range-label" for="weight-cloud"><span>Cloud &amp; enterprise</span><output for="weight-cloud">40%</output></label>
+        <input id="weight-cloud" type="range" min="0" max="100" step="10" value="40" data-topic-range="cloud">
+      </div>
+      <div class="range-row">
+        <label class="range-label" for="weight-technical-leadership"><span>Technical leadership</span><output for="weight-technical-leadership">60%</output></label>
+        <input id="weight-technical-leadership" type="range" min="0" max="100" step="10" value="60" data-topic-range="technical-leadership">
+      </div>
+      <div class="range-row">
+        <label class="range-label" for="weight-leadership-development"><span>Leadership development</span><output for="weight-leadership-development">50%</output></label>
+        <input id="weight-leadership-development" type="range" min="0" max="100" step="10" value="50" data-topic-range="leadership-development">
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Visible sections</legend>
+      <label class="choice"><input type="checkbox" value="intro" data-section-toggle checked><span>Introduction</span></label>
+      <label class="choice"><input type="checkbox" value="topics" data-section-toggle checked><span>Speaking topics</span></label>
+      <label class="choice"><input type="checkbox" value="formats" data-section-toggle checked><span>Presentation formats</span></label>
+      <label class="choice"><input type="checkbox" value="story" data-section-toggle checked><span>First-person story</span></label>
+      <label class="choice"><input type="checkbox" value="bio" data-section-toggle checked><span>Third-person biography</span></label>
+      <label class="choice"><input type="checkbox" value="timeline" data-section-toggle checked><span>Career timeline</span></label>
+      <label class="choice"><input type="checkbox" value="philosophy" data-section-toggle checked><span>Speaking philosophy</span></label>
+      <label class="choice"><input type="checkbox" value="booking" data-section-toggle checked><span>Booking request</span></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Appearance</legend>
+      <label class="choice"><input type="radio" name="theme" value="system" checked><span>Use device setting</span></label>
+      <label class="choice"><input type="radio" name="theme" value="light"><span>Light theme</span></label>
+      <label class="choice"><input type="radio" name="theme" value="dark"><span>Dark theme</span></label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Share or embed</legend>
+      <label class="choice"><input id="embed-view" type="checkbox"><span>Use the clean iframe view</span></label>
+      <div class="share-actions">
+        <button class="button" type="button" id="copy-link">Copy unique link</button>
+        <button class="button secondary" type="button" id="apply-link">Apply to this page</button>
+      </div>
+      <label for="embed-code"><span>Iframe code</span></label>
+      <textarea class="embed-code" id="embed-code" readonly></textarea>
+      <p class="share-status" id="share-status" role="status"></p>
+    </fieldset>
+  </dialog>
+
+  <script>
+    (() => {
+      const defaults = {
+        format: "keynote",
+        focuses: [],
+        theme: "system",
+        weights: { ai: 90, tools: 80, cloud: 40, "technical-leadership": 60, "leadership-development": 50 },
+        sections: ["intro", "topics", "formats", "story", "bio", "timeline", "philosophy", "booking"]
+      };
+      const formatNames = {
+        fireside: "Casual Fireside Chat",
+        keynote: "Keynote",
+        "deep-dive": "Technical Deep Dive",
+        panel: "Panel"
+      };
+      const focusNames = {
+        "career-development": "Career and personal development",
+        government: "Government, Public Sector",
+        "financial-services": "FinTech/FIS/Capital Markets",
+        "high-tech": "High Tech",
+        "professional-services": "ProServe",
+        "legal-tech": "LegalTech",
+        "startups-joint-ventures": "Startups/Joint Ventures",
+        "manufacturing-automotives-pharma": "Manufacturing/Automotives/Pharma",
+        "energy-oil-gas": "Energy/Oil & Gas",
+        "retail-supply-chain-logistics": "Retail/Supply Chain/Logistics",
+        "media-entertainment": "Media & Entertainment",
+        "nonprofit-ngos": "Nonprofit & NGOs"
+      };
+      const legacyFocusMap = {
+        manufacturing: "manufacturing-automotives-pharma",
+        energy: "energy-oil-gas"
+      };
+      const topicNames = {
+        ai: "AI & the future of software engineering",
+        tools: "Developer tools",
+        cloud: "Cloud & enterprise technology",
+        "technical-leadership": "Technical leadership",
+        "leadership-development": "Leadership development"
+      };
+      const dialog = document.querySelector("#customizer");
+      const form = document.querySelector("#booking-form");
+      const summary = document.querySelector("#request-summary");
+      const emailLink = document.querySelector("#email-request");
+      const shareStatus = document.querySelector("#share-status");
+      const embedCode = document.querySelector("#embed-code");
+      const params = new URLSearchParams(window.location.search);
+
+      const boundedWeight = (value, fallback) => {
+        const parsed = Number.parseInt(value, 10);
+        return Number.isFinite(parsed) ? Math.min(100, Math.max(0, parsed)) : fallback;
+      };
+
+      const getStateFromUrl = () => {
+        const requestedFormat = params.get("format");
+        const requestedFocuses = params.get("focus");
+        const legacyIndustry = params.get("industry");
+        const requestedTheme = params.get("clawpilotTheme");
+        const sectionsParam = params.get("sections");
+        return {
+          format: Object.hasOwn(formatNames, requestedFormat) ? requestedFormat : defaults.format,
+          focuses: (requestedFocuses || legacyIndustry || "")
+            .split(",")
+            .map(focus => legacyFocusMap[focus] || focus)
+            .filter(focus => Object.hasOwn(focusNames, focus)),
+          theme: requestedTheme === "light" || requestedTheme === "dark" ? requestedTheme : defaults.theme,
+          weights: Object.fromEntries(Object.entries(defaults.weights).map(([topic, fallback]) => [
+            topic,
+            boundedWeight(params.get(`topic-${topic}`), fallback)
+          ])),
+          sections: sectionsParam === null
+            ? [...defaults.sections]
+            : sectionsParam.split(",").filter(section => defaults.sections.includes(section)),
+          embed: params.get("embed") === "1"
+        };
+      };
+
+      const readControls = () => ({
+        format: document.querySelector('input[name="format"]:checked').value,
+        focuses: [...document.querySelectorAll('input[name="focus"]:checked')].map(input => input.value),
+        theme: document.querySelector('input[name="theme"]:checked').value,
+        weights: Object.fromEntries([...document.querySelectorAll("[data-topic-range]")].map(input => [
+          input.dataset.topicRange,
+          Number.parseInt(input.value, 10)
+        ])),
+        sections: [...document.querySelectorAll("[data-section-toggle]:checked")].map(input => input.value),
+        embed: document.querySelector("#embed-view").checked
+      });
+
+      const recommendFormat = state => {
+        const technical = (state.weights.ai + state.weights.tools + state.weights.cloud) / 3;
+        const leadership = (state.weights["technical-leadership"] + state.weights["leadership-development"]) / 2;
+        const values = Object.values(state.weights);
+        const spread = Math.max(...values) - Math.min(...values);
+        if (state.format === "panel") return "panel";
+        if (technical >= 72 && leadership < 65) return "deep-dive";
+        if (leadership >= 72 && spread >= 30) return "fireside";
+        if (Math.abs(technical - leadership) <= 15) return "keynote";
+        return technical > leadership ? "deep-dive" : "fireside";
+      };
+
+      const weightLabel = value => {
+        if (value === 0) return "Not included";
+        if (value < 40) return "Light touch";
+        if (value < 70) return "Supporting topic";
+        return "Primary focus";
+      };
+
+      const buildUrl = state => {
+        const url = new URL(window.location.href);
+        [...url.searchParams.keys()].forEach(key => url.searchParams.delete(key));
+        url.searchParams.set("format", state.format);
+        if (state.focuses.length) url.searchParams.set("focus", state.focuses.join(","));
+        if (state.theme !== "system") url.searchParams.set("clawpilotTheme", state.theme);
+        Object.entries(state.weights).forEach(([topic, weight]) => url.searchParams.set(`topic-${topic}`, weight));
+        url.searchParams.set("sections", state.sections.join(","));
+        if (state.embed) url.searchParams.set("embed", "1");
+        return url;
+      };
+
+      const setControls = state => {
+        document.querySelector(`input[name="format"][value="${state.format}"]`).checked = true;
+        document.querySelectorAll('input[name="focus"]').forEach(input => {
+          input.checked = state.focuses.includes(input.value);
+        });
+        document.querySelector(`input[name="theme"][value="${state.theme}"]`).checked = true;
+        Object.entries(state.weights).forEach(([topic, weight]) => {
+          const input = document.querySelector(`[data-topic-range="${topic}"]`);
+          input.value = weight;
+          input.previousElementSibling.querySelector("output").value = `${weight}%`;
+        });
+        document.querySelectorAll("[data-section-toggle]").forEach(input => {
+          input.checked = state.sections.includes(input.value);
+        });
+        document.querySelector("#embed-view").checked = state.embed;
+      };
+
+      const applyState = state => {
+        const appliedTheme = state.theme === "system"
+          ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+          : state.theme;
+        document.documentElement.dataset.theme = appliedTheme;
+        document.documentElement.dataset.embed = state.embed;
+        document.querySelectorAll("[data-section]").forEach(section => {
+          section.hidden = !state.sections.includes(section.dataset.section);
+        });
+        Object.entries(state.weights).forEach(([topic, weight]) => {
+          const card = document.querySelector(`[data-topic="${topic}"]`);
+          card.dataset.weight = weight === 0 ? "low" : "visible";
+          card.querySelector("[data-weight-label]").textContent = weightLabel(weight);
+        });
+        const recommendation = recommendFormat(state);
+        document.querySelectorAll("[data-format-card]").forEach(card => {
+          card.classList.toggle("recommended", card.dataset.formatCard === recommendation);
+        });
+        document.querySelector("#format-recommendation").innerHTML =
+          `<strong>Best fit:</strong> ${formatNames[recommendation]}. ${recommendation === state.format ? "Your selection matches the recommendation." : `You can still choose ${formatNames[state.format]} if it better suits the event.`}`;
+        const url = buildUrl(state);
+        const embedUrl = new URL(url);
+        embedUrl.searchParams.set("embed", "1");
+        embedCode.value = `<iframe src="${embedUrl.href}" title="Chad Hage speaker profile" width="100%" height="900" loading="lazy"></iframe>`;
+        updateBookingSummary(state);
+      };
+
+      const updateBookingSummary = state => {
+        const values = Object.fromEntries(new FormData(form));
+        const selectedTopics = Object.entries(state.weights)
+          .filter(([, weight]) => weight > 0)
+          .sort((a, b) => b[1] - a[1])
+          .map(([topic, weight]) => `- ${topicNames[topic]}: ${weight}% emphasis`)
+          .join("\n");
+        const lines = [
+          `Speaking Engagement Request`,
+          ``,
+          `Contact: ${values.contactName || "To be provided"}`,
+          `Event or organization: ${values.eventName || "To be provided"}`,
+          `Date: ${values.eventDate || "To be determined"}`,
+          `Location or URL: ${values.eventLocation || "To be determined"}`,
+          `Audience: ${values.audience || "To be provided"}`,
+          `Focus: ${state.focuses.length ? state.focuses.map(focus => focusNames[focus]).join(", ") : "To be selected"}`,
+          `Preferred format: ${formatNames[state.format]}`,
+          ``,
+          `Topic mix:`,
+          selectedTopics || "- Open to recommendation",
+          ``,
+          `Additional context:`,
+          values.notes || "None provided",
+          ``,
+          `Customized speaker profile:`,
+          buildUrl({ ...state, embed: false }).href
+        ];
+        const request = lines.join("\n");
+        summary.textContent = request;
+        emailLink.href = `mailto:chad.hage@microsoft.com?subject=${encodeURIComponent("Speaking Engagement Request")}&body=${encodeURIComponent(request)}`;
+      };
+
+      const copyText = async text => {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+        const temporary = document.createElement("textarea");
+        temporary.value = text;
+        temporary.style.position = "fixed";
+        temporary.style.opacity = "0";
+        document.body.appendChild(temporary);
+        temporary.select();
+        const copied = document.execCommand("copy");
+        temporary.remove();
+        if (!copied) throw new Error("Copy command was unavailable.");
+      };
+
+      const initialState = getStateFromUrl();
+      setControls(initialState);
+      applyState(initialState);
+
+      document.querySelectorAll("[data-open-customizer]").forEach(button => {
+        button.addEventListener("click", () => dialog.showModal());
+      });
+      document.querySelector("[data-close-customizer]").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", event => {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener("input", event => {
+        if (event.target.matches("[data-topic-range]")) {
+          event.target.previousElementSibling.querySelector("output").value = `${event.target.value}%`;
+        }
+        applyState(readControls());
+        shareStatus.textContent = "";
+      });
+      form.addEventListener("input", () => updateBookingSummary(readControls()));
+      document.querySelector("#apply-link").addEventListener("click", () => {
+        window.location.href = buildUrl(readControls()).href;
+      });
+      document.querySelector("#copy-link").addEventListener("click", async () => {
+        try {
+          await copyText(buildUrl(readControls()).href);
+          shareStatus.textContent = "Unique link copied.";
+        } catch (error) {
+          shareStatus.textContent = `Could not copy automatically: ${error.message}`;
+        }
+      });
+      embedCode.addEventListener("focus", () => embedCode.select());
+    })();
+  </script>
+</body>
+</html>
