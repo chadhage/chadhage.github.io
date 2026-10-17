@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Résumé | Chad Hage</title>
+  <meta name="description" content="Chad Hage's career highlights across cloud, AI, software engineering, architecture, and technical leadership.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://chadhage.github.io/resume.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Chad Hage | Résumé">
+  <meta property="og:description" content="Technology strategist, engineering leader, architect, and inventor.">
+  <meta property="og:url" content="https://chadhage.github.io/resume.html">
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const theme = param === "light" || param === "dark"
+        ? param
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #777777;
+      --cp-text: #dedede;
+      --cp-text-muted: #b5b5b5;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+    }
+    * { box-sizing: border-box; }
+    html { letter-spacing: 0; scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100svh;
+      border-top: 6px solid var(--cp-accent);
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      font: 17px/1.6 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 5px; }
+    a:hover { color: var(--cp-accent-hover); }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 4px; }
+    ::selection { background: var(--cp-highlight); }
+    .wrap { width: min(100% - 64px, 1120px); margin-inline: auto; }
+    .skip-link { position: absolute; top: -100px; left: 24px; z-index: 10; padding: 12px; background: var(--cp-surface); }
+    .skip-link:focus { top: 16px; }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-block: 22px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .identity { min-width: 0; }
+    .identity-primary { display: flex; align-items: center; gap: 12px; }
+    .microsoft-logo-link {
+      display: inline-flex;
+      flex-shrink: 0;
+      padding: 5px 7px;
+      border: 1px solid var(--cp-border);
+      border-radius: 4px;
+      background: #ffffff;
+    }
+    .microsoft-logo-crop { width: 23px; height: 23px; overflow: hidden; }
+    .microsoft-logo { display: block; width: auto; max-width: none; height: 23px; }
+    .wordmark { font-weight: 650; text-decoration: none; white-space: nowrap; }
+    .identity-links { margin: 5px 0 0; color: var(--cp-text-soft); font-size: 12px; line-height: 1.4; }
+    .identity-links a { text-decoration: none; }
+    .identity-links span { margin-inline: 5px; }
+    nav { display: flex; align-items: center; gap: 20px; font-size: 15px; }
+    nav [aria-current] { color: var(--cp-accent); }
+    .print-button {
+      min-height: 42px;
+      padding: 8px 14px;
+      border: 1px solid var(--cp-accent);
+      border-radius: 6px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font: inherit;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .print-button:hover { background: var(--cp-accent-hover); }
+    main { padding-top: 56px; }
+    .hero { display: grid; grid-template-columns: 1fr 220px; gap: 64px; align-items: center; }
+    .portrait {
+      display: block;
+      width: 220px;
+      height: 220px;
+      border: 1px solid var(--cp-border);
+      border-radius: 50%;
+      background: var(--cp-surface-soft);
+      object-fit: cover;
+      box-shadow: var(--cp-shadow);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--cp-accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(50px, 8vw, 76px); font-weight: 650; line-height: 1.05; letter-spacing: -0.03em; }
+    .role { max-width: 760px; margin: 16px 0 0; color: var(--cp-text-muted); font-size: 24px; line-height: 1.4; }
+    .summary { max-width: 790px; margin: 22px 0 0; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 24px; font-size: 15px; }
+    section { margin-top: 68px; scroll-margin-top: 24px; }
+    .section-heading { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: end; margin-bottom: 24px; }
+    h2 { margin: 0; font-size: 34px; line-height: 1.2; font-weight: 650; letter-spacing: -0.02em; }
+    .section-heading p { margin: 0; color: var(--cp-text-muted); }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 36px; }
+    .metric {
+      min-width: 0;
+      padding: 22px;
+      border: 1px solid var(--cp-border);
+      border-top: 3px solid var(--cp-accent);
+      border-radius: 8px;
+      background: var(--cp-surface-soft);
+    }
+    .metric strong { display: block; color: var(--cp-accent); font-size: 34px; line-height: 1.05; letter-spacing: -0.03em; }
+    .metric span { display: block; margin-top: 9px; color: var(--cp-text-muted); font-size: 14px; line-height: 1.4; }
+    .scale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .scale-card { padding: 28px; border-radius: 10px; background: var(--cp-bg); }
+    .scale-card h3 { margin: 0 0 18px; font-size: 22px; }
+    .scale-card ul { margin: 0; padding-left: 21px; }
+    .scale-card li + li { margin-top: 9px; }
+    .timeline { position: relative; margin-top: 12px; }
+    .timeline::before { position: absolute; top: 8px; bottom: 8px; left: 116px; width: 2px; background: var(--cp-border); content: ""; }
+    .career-item { display: grid; grid-template-columns: 92px 1fr; gap: 48px; position: relative; padding-block: 20px; }
+    .career-item::before {
+      position: absolute;
+      top: 29px;
+      left: 110px;
+      width: 12px;
+      height: 12px;
+      border: 3px solid var(--cp-surface);
+      border-radius: 50%;
+      background: var(--cp-accent);
+      content: "";
+    }
+    .career-era { padding-top: 2px; color: var(--cp-accent); font-size: 13px; font-weight: 700; text-transform: uppercase; }
+    .career-card { padding: 0 0 22px; border-bottom: 1px solid var(--cp-border); }
+    .career-card h3 { margin: 0; font-size: 22px; line-height: 1.35; }
+    .career-role { margin: 4px 0 0; color: var(--cp-text-muted); font-weight: 600; }
+    .career-card p:last-child { margin: 12px 0 0; color: var(--cp-text-muted); }
+    .credential-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+    .credential {
+      padding: 24px;
+      border: 1px solid var(--cp-border);
+      border-radius: 8px;
+      background: var(--cp-surface-soft);
+    }
+    .credential h3 { margin: 0; font-size: 20px; line-height: 1.35; }
+    .credential p, .credential ul { margin-bottom: 0; color: var(--cp-text-muted); font-size: 15px; }
+    .credential ul { padding-left: 20px; }
+    .credential li + li { margin-top: 7px; }
+    .focus-list { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 0; padding: 0; list-style: none; }
+    .focus-list li { padding: 8px 13px; border: 1px solid var(--cp-border); border-radius: 999px; background: var(--cp-surface-soft); font-size: 14px; }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding-block: 52px 28px;
+      color: var(--cp-text-soft);
+      font-size: 13px;
+    }
+    footer p { margin: 0; }
+    @media (max-width: 900px) {
+      .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .credential-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .wrap { width: calc(100% - 40px); }
+      header { align-items: flex-start; padding-block: 18px; }
+      nav a { display: none; }
+      .identity-primary { gap: 8px; }
+      .identity-links { font-size: 11px; }
+      .identity-links span { margin-inline: 2px; }
+      main { padding-top: 38px; }
+      .hero { grid-template-columns: 1fr; gap: 28px; }
+      .portrait { grid-row: 1; width: 150px; height: 150px; }
+      h1 { font-size: 50px; }
+      .role { font-size: 20px; }
+      section { margin-top: 52px; }
+      .section-heading { grid-template-columns: 1fr; gap: 8px; }
+      .scale-grid, .credential-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 7px; }
+      .career-item { grid-template-columns: 1fr; gap: 5px; padding-left: 32px; }
+      .career-item::before { top: 28px; left: 0; }
+      .career-era { padding-top: 0; }
+    }
+    @media (max-width: 440px) {
+      .metrics { grid-template-columns: 1fr; }
+      .print-button { padding-inline: 10px; font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      main { animation: arrive 450ms ease-out both; }
+      @keyframes arrive { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    }
+    @media print {
+      :root, html[data-theme="dark"] {
+        color-scheme: light;
+        --cp-bg: #f7f4ef;
+        --cp-surface: #ffffff;
+        --cp-surface-soft: #f5f5f5;
+        --cp-border: #d7d7d7;
+        --cp-text: #1f1f1f;
+        --cp-text-muted: #4f4f4f;
+        --cp-text-soft: #666666;
+        --cp-accent: #8a1739;
+        --cp-accent-soft: rgba(138, 23, 57, 0.08);
+        --cp-shadow: none;
+      }
+      body { border-top-width: 4px; font-size: 11pt; }
+      .wrap { width: 100%; max-width: none; padding-inline: 0.35in; }
+      header { padding-block: 12px; }
+      nav, .skip-link { display: none; }
+      main { padding-top: 24px; }
+      .hero { grid-template-columns: 1fr 1.4in; gap: 0.35in; }
+      .portrait { width: 1.4in; height: 1.4in; box-shadow: none; }
+      h1 { font-size: 36pt; }
+      .role { font-size: 16pt; }
+      section { margin-top: 34px; break-inside: avoid; }
+      .metrics { grid-template-columns: repeat(4, 1fr); }
+      .metric { padding: 12px; }
+      .metric strong { font-size: 22pt; }
+      .scale-card, .credential { padding: 16px; }
+      .career-item, .metric, .scale-card, .credential { break-inside: avoid; }
+      footer { padding-block: 28px 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header>
+      <div class="identity">
+        <div class="identity-primary">
+          <a class="microsoft-logo-link" href="https://www.microsoft.com/" aria-label="Microsoft">
+            <span class="microsoft-logo-crop">
+              <img class="microsoft-logo" src="https://uhf.microsoft.com/images/microsoft/RE1Mu3b.png" alt="" height="23">
+            </span>
+          </a>
+          <a class="wordmark" href="./index.html" aria-label="Chad Hage home">Chad Hage</a>
+        </div>
+        <p class="identity-links">
+          <a href="https://chadhage.com/">chadhage.com</a><span aria-hidden="true">|</span><a href="https://aka.ms/chad.a.hage">aka.ms/chad.a.hage</a>
+        </p>
+      </div>
+      <nav aria-label="Résumé actions">
+        <a href="./speaker.html">Speaking</a>
+        <button class="print-button" type="button" onclick="window.print()">Print résumé</button>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Technology strategist / Engineering leader / Inventor</p>
+          <h1>Chad Hage</h1>
+          <p class="role">Cloud &amp; AI technology strategist with experience spanning architecture, software engineering, global leadership, and enterprise transformation.</p>
+          <p class="summary">Chad works at the intersection of people, technology, and change. His career connects hands-on architecture with engineering leadership, modern application platforms, AI, developer tools, and the practical work of helping organizations turn complex technology into durable outcomes.</p>
+          <div class="contact-row">
+            <a href="./contact.html">Get in touch</a>
+            <a href="https://github.com/chadhage">github.com/chadhage</a>
+            <a href="https://chadhage.com/">chadhage.com</a>
+          </div>
+        </div>
+        <img class="portrait" src="https://github.com/chadhage.png?size=440" alt="Portrait of Chad Hage" width="220" height="220">
+      </section>
+
+      <section aria-labelledby="impact-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Career impact</p>
+            <h2 id="impact-title">Experience in numbers</h2>
+          </div>
+          <p>Scale across people leadership, software delivery, cloud transformation, invention, and global enterprise programs.</p>
+        </div>
+        <div class="metrics">
+          <article class="metric"><strong>31 / 200+</strong><span>patents disclosed / harvested and recognized through the USPTO</span></article>
+          <article class="metric"><strong>$2.5B</strong><span>annual revenue scope, across 140 markets served, with end-to-end platform engineering DRI</span></article>
+          <article class="metric"><strong>1 Million+</strong><span>servers migrated from on-prem to cloud and from cloud-to-cloud</span></article>
+          <article class="metric"><strong>~1.5M</strong><span>user experiences modernized through enterprise scale architecture</span></article>
+        </div>
+      </section>
+
+      <section aria-labelledby="scale-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Leadership &amp; execution</p>
+            <h2 id="scale-title">Operating at scale</h2>
+          </div>
+          <p>Experience leading globally distributed engineering organizations while remaining grounded in architecture and delivery.</p>
+        </div>
+        <div class="scale-grid">
+          <article class="scale-card">
+            <h3>As a people leader</h3>
+            <ul>
+              <li>People leadership across team sizes and organizational levels, ranging from small Agile teams to multilevel scaled organizations.</li>
+              <li>Managed FTE and contingent staff across six locations and five time zones.</li>
+              <li>Served as the Directly Responsible Individual for multiple engineering and business platforms.</li>
+              <li>Received and participated in formal leadership development, training, and skilling.</li>
+            </ul>
+          </article>
+          <article class="scale-card">
+            <h3>As an individual contributor</h3>
+            <ul>
+              <li>Led dozens of highly complex, enterprise-scale cloud adoption and transformation programs.</li>
+              <li>Experience with multinational and global sovereign commercial and government cloud scenarios.</li>
+              <li>Cross-functional leadership across Core, Security, Applications, Data, and AI.</li>
+              <li>Published numerous position papers and white papers on AI, machine learning, blockchain, digital contracts, digital signal processing, machine vision, microservices architecture, multicloud, and hybrid architectures.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="career-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Career journey</p>
+            <h2 id="career-title">From architecture to Cloud &amp; AI</h2>
+          </div>
+          <p>A career through-line spanning regulated industries, media measurement, product engineering, consulting, and Microsoft cloud transformation.</p>
+        </div>
+        <div class="timeline">
+          <article class="career-item">
+            <div class="career-era">Before 2010s</div>
+            <div class="career-card">
+              <h3>Modernization across Banking, Insurance, Healthcare, and Hospitality</h3>
+              <p class="career-role">Technology consulting, modernization, and enterprise transformation</p>
+              <p>Consulting, architecture, and technology delivery with CGI, JPMorgan Chase, WellCare, GEICO, CVS, and Marriott across regulated industries, spanning commerce &amp; logistics, financial-services compliance, and healthcare platforms.</p>
+            </div>
+          </article>
+          <article class="career-item">
+            <div class="career-era">2010s</div>
+            <div class="career-card">
+              <h3>Nielsen</h3>
+              <p class="career-role">Principal Architect → Program/Product/Portfolio Management → Director → World Wide Engineering Leader</p>
+              <p>Led and shaped measurement technology and engineering across film, television, radio, web, mobile, and cross-device platforms. Spearheaded the adoption of AI, machine vision, natural language processing, and machine learning for content identification across video, audio, and multimedia. An outspoken advocate for privacy protection at the W3C. Launched several grassroots organizations to promote, design, and deploy secure computing glass-to-glass—from the camera lens to the viewer's screen.</p>
+            </div>
+          </article>
+          <article class="career-item">
+            <div class="career-era">Today</div>
+            <div class="career-card">
+              <h3>Microsoft</h3>
+              <p class="career-role">Sr. AI Consultant → Cloud Solution Architect → Sr. Azure Core CSA → Sr. Cloud &amp; AI CSA</p>
+              <p>Work spanning modern applications, bots and cognitive services, North America CSU, cross-solution field architecture, and Cloud &amp; AI Apps &amp; Infrastructure.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="credentials-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Credentials &amp; contribution</p>
+            <h2 id="credentials-title">Depth beyond the role</h2>
+          </div>
+          <p>Technical certifications, professional methods, standards participation, invention, and public speaking complement Chad's operating experience.</p>
+        </div>
+        <div class="credential-grid">
+          <article class="credential">
+            <h3>Technical Depth</h3>
+            <ul>
+              <li>Azure Solutions Architecture</li>
+              <li>Cloud Native Architecture</li>
+              <li>App Modernization</li>
+              <li>AI/ML/Cognitive Services</li>
+              <li>Security Architecture</li>
+              <li>Big Data / Fat Data Architecture</li>
+              <li>ALM/SDLC/GitOps</li>
+              <li>Digital Signal Processing (DSP)</li>
+              <li>Platform Engineering</li>
+              <li>Data Warehousing / Star Schemas / Cubes</li>
+              <li>Multicloud / Hybrid Cloud Architecture</li>
+              <li>Commercial / Gov / GCC High Experience</li>
+              <li>AWS / Azure / GCP</li>
+            </ul>
+          </article>
+          <article class="credential">
+            <h3>Professional methods</h3>
+            <ul>
+              <li>PMI / PMP / CMMI</li>
+              <li>Prosci change management.</li>
+              <li>GAAP / M&amp;A / Joint Ventures</li>
+              <li>TOGAF enterprise architecture.</li>
+              <li>Scrum certifications: Professional Scrum Master, Certified ScrumMaster, Product Owner, and Scrum@Scale.</li>
+              <li>Lean Six Sigma Master Black Belt.</li>
+              <li>ITIL v3/v4/v5 service management.</li>
+              <li>DevOps practices for collaboration and software delivery.</li>
+            </ul>
+          </article>
+          <article class="credential">
+            <h3>Innovation &amp; standards</h3>
+            <ul>
+              <li><strong>31 patents</strong>.</li>
+              <li><strong>Six years of W3C involvement</strong>
+                <ul>
+                  <li>Advisory Committee Member from 2010–2016</li>
+                  <li>Co-Chair of the Web &amp; TV Interest Group</li>
+                  <li>Technology &amp; Society, privacy protection, web payments, blockchain, and Web Audio</li>
+                </ul>
+              </li>
+              <li><strong>Public speaking</strong>
+                <ul>
+                  <li>MRC</li>
+                  <li>W3C</li>
+                  <li>IEEE</li>
+                  <li>Agile Alliance</li>
+                  <li>DevOps Days</li>
+                  <li>Tampa Bay Tech</li>
+                  <li>Tampa Bay Technology Leadership Association</li>
+                  <li>USF Bellini College of AI</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section aria-labelledby="focus-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Areas of focus</p>
+            <h2 id="focus-title">Technology, leadership &amp; industries</h2>
+          </div>
+          <p>Current speaking themes and career domains drawn from the speaker profile and professional journey.</p>
+        </div>
+        <ul class="focus-list" aria-label="Technology and leadership focus areas">
+          <li>AI &amp; the future of software engineering</li>
+          <li>Developer tools</li>
+          <li>Cloud &amp; enterprise technology</li>
+          <li>Technical leadership</li>
+          <li>Leadership development</li>
+          <li>Modern applications</li>
+          <li>Reference engineering</li>
+        </ul>
+        <ul class="focus-list" aria-label="Industry experience">
+          <li>Financial services</li>
+          <li>Oil &amp; gas</li>
+          <li>Media</li>
+          <li>Professional services</li>
+          <li>Manufacturing</li>
+          <li>Healthcare</li>
+          <li>Startups &amp; joint ventures</li>
+          <li>Government cloud</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; Chad Hage</p>
+      <p>Technology strategy, engineering leadership, and practical transformation.</p>
+    </footer>
+  </div>
+</body>
+</html>
