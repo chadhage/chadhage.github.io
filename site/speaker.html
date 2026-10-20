@@ -104,6 +104,33 @@
     .identity-links a { text-decoration: none; }
     .identity-links span { margin-inline: 5px; }
     .header-actions { display: flex; align-items: center; gap: 16px; }
+    .profile-views {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 18px;
+      border-bottom: 1px solid var(--cp-border);
+    }
+    .profile-views p { margin: 0; font-size: 14px; font-weight: 650; }
+    .profile-view-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .profile-view-option {
+      min-height: 40px;
+      padding: 7px 14px;
+      border: 1px solid var(--cp-border);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--cp-text);
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+    }
+    .profile-view-option:hover,
+    .profile-view-option[aria-pressed="true"] {
+      border-color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      color: var(--cp-accent);
+    }
     .button {
       display: inline-flex;
       align-items: center;
@@ -271,6 +298,7 @@
     html[data-embed="true"] body { border-top-width: 4px; }
     html[data-embed="true"] header,
     html[data-embed="true"] footer,
+    html[data-embed="true"] .profile-views,
     html[data-embed="true"] .customize-trigger { display: none; }
     html[data-embed="true"] main { padding-block: 40px; }
     @media (max-width: 800px) {
@@ -283,6 +311,9 @@
       .wrap { width: calc(100% - 40px); }
       header { padding-block: 18px; }
       header .customize-trigger { display: none; }
+      .profile-views { align-items: start; flex-direction: column; gap: 10px; }
+      .profile-view-options { width: 100%; }
+      .profile-view-option { flex: 1 1 auto; }
       .identity-primary { gap: 8px; }
       .identity-links { font-size: 11px; }
       .identity-links span { margin-inline: 2px; }
@@ -329,6 +360,14 @@
         <a class="button" href="#booking">Book Chad</a>
       </div>
     </header>
+    <nav class="profile-views" aria-label="Profile view">
+      <p>Choose your view</p>
+      <div class="profile-view-options">
+        <button class="profile-view-option" type="button" data-profile-preset="minimalist" aria-pressed="false">Minimalist</button>
+        <button class="profile-view-option" type="button" data-profile-preset="complete" aria-pressed="true">Complete</button>
+        <button class="profile-view-option" type="button" data-open-customizer>Tailor this profile</button>
+      </div>
+    </nav>
     <main id="main" tabindex="-1">
       <section class="hero" data-section="intro">
         <div>
@@ -593,6 +632,10 @@
         weights: { ai: 90, tools: 80, cloud: 40, "technical-leadership": 60, "leadership-development": 50 },
         sections: ["intro", "topics", "formats", "story", "bio", "timeline", "philosophy", "booking"]
       };
+      const profilePresets = {
+        minimalist: ["intro", "topics", "bio", "booking"],
+        complete: [...defaults.sections]
+      };
       const formatNames = {
         fireside: "Casual Fireside Chat",
         keynote: "Keynote",
@@ -737,6 +780,12 @@
         document.querySelectorAll("[data-section]").forEach(section => {
           section.hidden = !state.sections.includes(section.dataset.section);
         });
+        document.querySelectorAll("[data-profile-preset]").forEach(button => {
+          const presetSections = profilePresets[button.dataset.profilePreset];
+          const isActive = presetSections.length === state.sections.length
+            && presetSections.every(section => state.sections.includes(section));
+          button.setAttribute("aria-pressed", String(isActive));
+        });
         Object.entries(state.weights).forEach(([topic, weight]) => {
           const card = document.querySelector(`[data-topic="${topic}"]`);
           card.dataset.weight = weight === 0 ? "low" : "visible";
@@ -809,6 +858,15 @@
 
       document.querySelectorAll("[data-open-customizer]").forEach(button => {
         button.addEventListener("click", () => dialog.showModal());
+      });
+      document.querySelectorAll("[data-profile-preset]").forEach(button => {
+        button.addEventListener("click", () => {
+          const state = { ...readControls(), sections: [...profilePresets[button.dataset.profilePreset]] };
+          setControls(state);
+          applyState(state);
+          window.history.replaceState(null, "", buildUrl(state));
+          shareStatus.textContent = "";
+        });
       });
       document.querySelector("[data-close-customizer]").addEventListener("click", () => dialog.close());
       dialog.addEventListener("click", event => {

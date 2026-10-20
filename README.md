@@ -30,5 +30,6 @@
 - :zap: **Fun fact:** My architecture work has taken me to solutions operating
   **on land, in the air, and subsea**.
 - :mailbox: Building something, solving a tough problem, or looking to compare
-  notes? Reach me at [chad.hage@outlook.com](mailto:chad.hage@outlook.com), or
+  notes? Reach me via [chadhage.com](https://chadhage.com),
+  [aka.ms/chad.a.hage](https://aka.ms/chad.a.hage), or
   find me at [chadhage.github.io](https://chadhage.github.io/).
