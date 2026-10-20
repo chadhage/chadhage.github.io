@@ -33,3 +33,10 @@
   notes? Reach me via [chadhage.com](https://chadhage.com),
   [aka.ms/chad.a.hage](https://aka.ms/chad.a.hage), or
   find me at [chadhage.github.io](https://chadhage.github.io/).
+
+## Resume photo
+
+The [resume](./site/resume.html) shows the profile photo by default. Use
+[`?avatar.visible=false`](./site/resume.html?avatar.visible=false) to hide it,
+including when printing or saving as PDF. If the URL already has query
+parameters, append `&avatar.visible=false` instead.

@@ -13,11 +13,13 @@
   <meta property="og:url" content="https://chadhage.github.io/resume.html">
   <script>
     (() => {
-      const param = new URLSearchParams(window.location.search).get("clawpilotTheme");
+      const params = new URLSearchParams(window.location.search);
+      const param = params.get("clawpilotTheme");
       const theme = param === "light" || param === "dark"
         ? param
         : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
       document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.setAttribute("data-avatar-visible", String(params.get("avatar.visible") !== "false"));
     })();
   </script>
   <style>
@@ -122,6 +124,8 @@
       object-fit: cover;
       box-shadow: var(--cp-shadow);
     }
+    html[data-avatar-visible="false"] .hero { grid-template-columns: 1fr; }
+    html[data-avatar-visible="false"] .portrait { display: none; }
     .eyebrow {
       margin: 0 0 10px;
       color: var(--cp-accent);
